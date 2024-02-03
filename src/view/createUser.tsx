@@ -42,11 +42,21 @@ const CreateUser = ():JSX.Element => {
                 console.error('Error:', error);
             });
     }
+    const getUser= () => {
+        axios.get(API_URL+"/api/users/user-3", axiosConfig)
+            .then(response => {
+                console.log('Success:', response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
     return (
         <h1>
             <button onClick={createUser}>Create</button>
             <button onClick={getAllUser}>Get All</button>
+            <button onClick={getUser}>Get</button>
         </h1>
     )
 }
