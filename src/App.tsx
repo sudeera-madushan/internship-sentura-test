@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { WeavyClient, WeavyProvider, Chat } from '@weavy/uikit-react';
+import "@weavy/uikit-react/dist/css/weavy.css";
+
+const weavyClient = new WeavyClient({
+    url: "https://8ea71269743349ec9437d28d1cd0278f.weavy.io",
+    tokenFactory: async (refresh) => "wys_adTKKp1VrXPVQGp1x5rgd16Rgw9f7A3e3HKF"
+});
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div className="App">
+            <WeavyProvider client={weavyClient}>
+                <Chat uid="demochat" />
+            </WeavyProvider>
+        </div>
+    )
 }
 
-export default App
+export default App;
